@@ -11,16 +11,18 @@ import (
 )
 
 const (
-	NoBot         uint8 = iota // Not a bot
-	Prefetch                   // Prefetch algorithm
-	Link                       // User-Agent contained an URL.
-	ClientLibrary              // Known client library.
-	KnownBot                   // Known bot.
-	Boty                       // User-Agent string looks "boty".
+	NoBotKnown       uint8 = iota // Known to not be a bot.
+	NoBotNoMatch                  // None of the rules matches, so probably not a bot.
+	BotPrefetch                   // Prefetch algorithm
+	BotLink                       // User-Agent contained an URL.
+	BotClientLibrary              // Known client library.
+	BotKnownBot                   // Known bot.
+	BotBoty                       // User-Agent string looks "boty".
 )
 
-func Is(r uint8) bool    { return r != NoBot }
-func IsNot(r uint8) bool { return r == NoBot }
+// Is this constant a bot?
+func Is(r uint8) bool    { return r != NoBotKnown && r != NoBotNoMatch }
+func IsNot(r uint8) bool { return !Is(r) }
 
 // Bot checks if this HTTP request looks like a bot.
 //
@@ -32,7 +34,7 @@ func Bot(r *http.Request) uint8 {
 	//
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ
 	if h.Get("X-Moz") == "prefetch" || h.Get("X-Purpose") == "prefetch" || h.Get("Purpose") == "prefetch" || h.Get("X-Purpose") == "preview" || h.Get("Purpose") == "preview" {
-		return Prefetch
+		return BotPrefetch
 	}
 
 	return UserAgent(r.UserAgent())
@@ -46,20 +48,26 @@ func UserAgent(ua string) uint8 {
 	// we want to do with that; a quick looks reveals they *may* be regular
 	// users who cleared it? Not sure...
 
+	for i := range knownBrowsers {
+		if strings.Contains(ua, knownBrowsers[i]) {
+			return NoBotKnown
+		}
+	}
+
 	// Something with a link is almost always a bot.
 	if strings.Contains(ua, "http://") || strings.Contains(ua, "https://") {
-		return Link
+		return BotLink
 	}
 
 	for i := range clientLibraries {
 		if strings.Contains(ua, clientLibraries[i]) {
-			return ClientLibrary
+			return BotClientLibrary
 		}
 	}
 
 	for i := range knownBots {
 		if strings.Contains(ua, knownBots[i]) {
-			return KnownBot
+			return BotKnownBot
 		}
 	}
 
@@ -73,9 +81,9 @@ func UserAgent(ua string) uint8 {
 		strings.Contains(ua, "worm") ||
 		strings.Contains(ua, "fetch") ||
 		strings.Contains(ua, "nutch") {
-		return Boty
+		return BotBoty
 	}
-	return NoBot
+	return NoBotNoMatch
 }
 
 var clientLibraries = []string{
@@ -92,6 +100,17 @@ var clientLibraries = []string{
 	"WinHttp.WinHttpRequest.5",
 	"curl/",
 	"python-requests/",
+}
+
+var knownBrowsers = []string{
+	"CUBOT_",
+	"CUBOT ",
+	"NAVER(inapp",
+	"SearchCraft/",
+	"StudoBrowser/",
+	"YaSearchBrowser/",
+	"YandexSearch/",
+	"YandexSearchBrowser/",
 }
 
 var knownBots = []string{

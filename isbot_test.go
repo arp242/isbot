@@ -191,10 +191,6 @@ var bots = []string{
 	"Mozilla/4.0 (compatible; Synapse)",
 	"Mozilla/4.0 (compatible; http://search.thunderstone.com/texis/websearch/about.html)",
 	"Mozilla/5.0 (Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36 (compatible; Statically-Screenshot; +https://statically.io/screenshot)",
-	"Mozilla/5.0 (Linux; Android 10; Android SDK built for x86 Build/QSR1.190920.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.185 Mobile Safari/537.36 StudoBrowser/3.16.2-android-studo.staging (https://studo.co/studo-browser-information-and-contact)",
-	"Mozilla/5.0 (Linux; Android 10; Android SDK built for x86 Build/QSR1.190920.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.185 Mobile Safari/537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)",
-	"Mozilla/5.0 (Linux; Android 10; ONEPLUS A6003 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)",
-	"Mozilla/5.0 (Linux; Android 7.0; HUAWEI VNS-L31 Build/HUAWEIVNS-L31; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.93 Mobile Safari/537.36 StudoBrowser/3.16.0-android-studo (https://studo.co/studo-browser-information-and-contact)",
 	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:41.0) Gecko/20100101 Firefox/55.0 BrandVerity/1.0 (http://www.brandverity.com/why-is-brandverity-visiting-me)",
 	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/8.0.2 Safari/600.2.5 (Applebot/0.1; +http://www.apple.com/go/applebot)",
 	"Mozilla/5.0 (Windows NT 10.0; Win64; x64, SimpleAnalyticsBot/1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36",
@@ -243,10 +239,7 @@ var bots = []string{
 	"Mozilla/5.0 (compatible;Impact Radius Compliance Bot)",
 	"Mozilla/5.0 (compatible;contxbot/1.0)",
 	"Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1 (compatible; woorankreview/2.0; +https://www.woorank.com/)",
-	"Mozilla/5.0 (iPad; CPU OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)",
 	"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 (compatible; woorankreview/2.0; +https://www.woorank.com/)",
-	"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo.staging (https://studo.co/studo-browser-information-and-contact)",
-	"Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)",
 	"Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11A465 Twitter for iPhone BrandVerity/1.0 (http://www.brandverity.com/why-is-brandverity-visiting-me)",
 	"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 (Refindbot/1.0)",
 	"Mozilla/5.0 PhantomJS (compatible; Seznam screenshot-generator 2.1; +http://fulltext.sblog.cz/screenshot/)",
@@ -330,20 +323,31 @@ var notBots = []string{
 	"Mozilla/5.0 (X11; U; Linux armv7l like Android; en-us) AppleWebKit/531.2+ (KHTML, like Gecko) Version/5.0 Safari/533.2+ Kindle/3.0+",
 	"Mozilla/5.066704189 Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
 
+	// User-Agents with "search" in them but are NOT search crawlers.
+	"Mozilla/5.0 (Linux; Android 10; VOG-AL10 Build/HUAWEIVOG-AL10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.186 Mobile Safari/537.36 SearchCraft/3.6.4 (Baidu; P1 10)",
+	"Mozilla/5.0 (Linux; Android 5.1.1; SM-J320F Build/LMY47V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36 YandexSearch/8.05 YandexSearchBrowser/8.05",
+	"Mozilla/5.0 (Linux; Android 5.1.1; SM-J320F Build/LMY47V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/67.0.3396.87 Mobile Safari/537.36 YandexSearch/7.15",
+	"Mozilla/5.0 (Linux; arm; Android 9; SM-A105F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 YaApp_Android/10.45 YaSearchBrowser/10.45 BroPP/1.0 Mobile Safari/537.36",
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Mobile/15E148 Safari/605.1 NAVER(inapp; search; 690; 10.16.4; 8)",
+
+	// Contains a link, but is not a bot.
+	"Mozilla/5.0 (Linux; Android 10; Android SDK built for x86 Build/QSR1.190920.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.185 Mobile Safari/537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)",
+	"Mozilla/5.0 (Linux; Android 10; ONEPLUS A6003 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)",
+	"Mozilla/5.0 (Linux; Android 7.0; HUAWEI VNS-L31 Build/HUAWEIVNS-L31; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.93 Mobile Safari/537.36 StudoBrowser/3.16.0-android-studo (https://studo.co/studo-browser-information-and-contact)",
+	"Mozilla/5.0 (iPad; CPU OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)",
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo.staging (https://studo.co/studo-browser-information-and-contact)",
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)",
+
 	// Contains "BOT" but not a bot.
-	// TODO: fails, and they're detected as a bot; they're quite rare (about 300
+	"Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36",
+	"Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_X18_Plus Build/O00623; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Instagram 132.0.0.26.134 Android (26/8.0.0; 480dpi; 1080x2016; CUBOT; CUBOT_X18_Plus; CUBOT_X18_Plus; mt6755; en_GB; 202766609)",
+
+	// TODO: fails, and they're detected as a bot; they're quite rare (about 100
 	// hits out of 6.5 million) so not a disaster.
 	// "Mozilla/5.0 (Linux; Android 6.0; B BOT 550) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.93 Mobile Safari/537.36",
-	// "Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36",
 	// "Mozilla/5.0 (Linux; Android 6.0; VR BOT 552) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Mobile Safari/537.36",
-	// "Mozilla/5.0 (Linux; Android 7.0; CUBOT R9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Mobile Safari/537.36",
 	// "Mozilla/5.0 (Linux; Android 7.0; M bot 60) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36",
 	// "Mozilla/5.0 (Linux; Android 7.1.2; M_bot_tab_71 Build/NHG47K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.83 Safari/537.36",
-	// "Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_P20) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Mobile Safari/537.36",
-	// "Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_X18_Plus Build/O00623; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Instagram 132.0.0.26.134 Android (26/8.0.0; 480dpi; 1080x2016; CUBOT; CUBOT_X18_Plus; CUBOT_X18_Plus; mt6755; en_GB; 202766609)",
-	// "Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_X18_Plus Build/O00623; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Instagram 132.0.0.26.134 Android (26/8.0.0; 480dpi; 1080x2016; CUBOT; CUBOT_X18_Plus; CUBOT_X18_Plus; mt6755; en_GB; 202766609)",
-	// "Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_X18_Plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Mobile Safari/537.36",
-	// "Mozilla/5.0 (Linux; Android 8.0.0; CUBOT_X18_Plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Mobile Safari/537.36",
 	// "Mozilla/5.0 (Linux; Android 8.1.0; XBot Junior Build/O11019; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36",
 
 	// Embeded browsers for various services that also commonly run bots.
