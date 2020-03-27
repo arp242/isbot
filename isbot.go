@@ -75,12 +75,7 @@ func UserAgent(ua string) uint8 {
 	ua = strings.ToLower(ua)
 	if strings.Contains(ua, "bot") ||
 		strings.Contains(ua, "crawler") ||
-		strings.Contains(ua, "spider") ||
-		strings.Contains(ua, "spyder") ||
-		strings.Contains(ua, "search") ||
-		strings.Contains(ua, "worm") ||
-		strings.Contains(ua, "fetch") ||
-		strings.Contains(ua, "nutch") {
+		strings.Contains(ua, "spider") {
 		return BotBoty
 	}
 	return NoBotNoMatch
@@ -105,12 +100,7 @@ var clientLibraries = []string{
 var knownBrowsers = []string{
 	"CUBOT_",
 	"CUBOT ",
-	"NAVER(inapp",
-	"SearchCraft/",
 	"StudoBrowser/",
-	"YaSearchBrowser/",
-	"YandexSearch/",
-	"YandexSearchBrowser/",
 }
 
 var knownBots = []string{
