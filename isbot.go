@@ -131,7 +131,7 @@ var knownBots = []string{
 	"Netcraft Web Server Survey",
 	"NetcraftSurveyAgent/",
 	"Owler/",
-	"PageAnalyzer/1.1",
+	"PageAnalyzer/",
 	"ScopeContentAG-HTTP-Client",
 	"Survey/",
 	"Synapse",
