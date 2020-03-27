@@ -55,7 +55,7 @@ func UserAgent(ua string) uint8 {
 	}
 
 	// Something with a link is almost always a bot.
-	if strings.Contains(ua, "http://") || strings.Contains(ua, "https://") {
+	if strings.Contains(ua, "://") {
 		return BotLink
 	}
 
