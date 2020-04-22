@@ -6,6 +6,7 @@
 package isbot
 
 import (
+	"net"
 	"net/http"
 	"strings"
 )
@@ -18,6 +19,17 @@ const (
 	BotClientLibrary              // Known client library.
 	BotKnownBot                   // Known bot.
 	BotBoty                       // User-Agent string looks "boty".
+	BotShort                      // User-Agent is short of strangely formatted.
+
+	BotRangeAWS // AWS cloud
+)
+
+// These are never set by isbot, but can be used to send signals from JS.
+const (
+	BotJSWebdriver uint8 = iota + 150
+	BotJSPhantom
+	BotJSNightmare
+	BotJSSelenium
 )
 
 // Is this constant a bot?
@@ -37,7 +49,53 @@ func Bot(r *http.Request) uint8 {
 		return BotPrefetch
 	}
 
+	i := IPRange(realIP(r))
+	if i > 0 {
+		return i
+	}
+
 	return UserAgent(r.UserAgent())
+}
+
+// IPRange checks if this IP address is from a range that should normally never
+// send browser requests, such as AWS and other cloud providers.
+func IPRange(addr string) uint8 {
+	if addr == "" {
+		return 0
+	}
+	ip := net.ParseIP(addr)
+	if ip == nil {
+		return 0
+	}
+
+	if ip.To4() != nil { // TODO: can probably do more efficient check.
+		if containsIP(awsEC2Ranges4, ip) {
+			return BotRangeAWS
+		}
+	} else {
+		if containsIP(awsEC2Ranges6, ip) {
+			return BotRangeAWS
+		}
+	}
+
+	return 0
+}
+
+func containsIP(ranges []*net.IPNet, ip net.IP) bool {
+	for i := range ranges {
+		if ranges[i].Contains(ip) {
+			return true
+		}
+	}
+	return false
+}
+
+func parseNet(ip string) *net.IPNet {
+	_, n, err := net.ParseCIDR(ip)
+	if err != nil {
+		panic(err)
+	}
+	return n
 }
 
 // UserAgent checks if this User-Agent header looks like a bot.
@@ -47,6 +105,12 @@ func UserAgent(ua string) uint8 {
 	// TODO: it's not uncommon to not have a User-Agent at all ... not sure what
 	// we want to do with that; a quick looks reveals they *may* be regular
 	// users who cleared it? Not sure...
+
+	// Anything without a slash or space is almost certainly a bot.
+	// TODO: don't need 2 containsRune/loops over string; copy and modify code.
+	if len(ua) < 10 || !strings.ContainsRune(ua, ' ') || !strings.ContainsRune(ua, '/') {
+		return BotShort
+	}
 
 	for i := range knownBrowsers {
 		if strings.Contains(ua, knownBrowsers[i]) {
@@ -81,57 +145,20 @@ func UserAgent(ua string) uint8 {
 	return NoBotNoMatch
 }
 
-var clientLibraries = []string{
-	"Apache-HttpClient/",
-	"Go-http-client/",
-	"HTTPClient/",
-	"Java/",
-	"PycURL/",
-	"Python-urllib/",
-	"Robosourcer/",
-	"Ruby",
-	"Wget/",
-	"Wget/",
-	"WinHttp.WinHttpRequest.5",
-	"curl/",
-	"python-requests/",
-}
+func realIP(r *http.Request) string {
+	fwd := r.Header.Get("X-Forwarded-For")
+	if fwd != "" {
+		i := strings.Index(fwd, ",")
+		if i == -1 {
+			i = len(fwd)
+		}
+		return strings.TrimSpace(fwd[:i])
+	}
 
-var knownBrowsers = []string{
-	"CUBOT_",
-	"CUBOT ",
-	"StudoBrowser/",
-}
+	realip := r.Header.Get("X-Real-IP")
+	if realip != "" {
+		return realip
+	}
 
-var knownBots = []string{
-	"ADmantX",
-	"AlexaToolbar/",
-	"BingPreview/",
-	"Chrome-Lighthouse",
-	"DumpRenderTree/",
-	"Faraday v",
-	"GigablastOpenSource/",
-	"Google Web Preview",
-	"Google favicon",
-	"Google-Ads-Overview",
-	"Google-Site-Verification",
-	"GoogleSecurityScanner",
-	"Google_Analytics_Snippet_Validator",
-	"HeadlessChrome/",
-	"Netcraft Web Server Survey",
-	"NetcraftSurveyAgent/",
-	"Owler/",
-	"PageAnalyzer/",
-	"ScopeContentAG-HTTP-Client",
-	"Survey/",
-	"Synapse",
-	"Wappalyzer",
-	"WhatWeb/",
-	"WinInet",
-	"WordPress.com",
-	"burpcollaborator.net/",
-	"okhttp/",
-	"panscient.com",
-	"tracemyfile/",
-	"wsr-agent/",
+	return r.RemoteAddr
 }

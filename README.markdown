@@ -3,8 +3,8 @@ request that isn't a regular browser request initiated by the user. This
 includes things like web crawlers, but also stuff like "preview" renderers and
 the like.
 
-`Bot()` accepts a `http.Request` since it looks at *all* headers, not just the
-`User-Agent`. You can use `UserAgent()` if you just have a `User-Agent`, but
+`Bot()` accepts a `http.Request` since it looks at *all* information, not just
+the `User-Agent`. You can use `UserAgent()` if you just have a `User-Agent`, but
 it's highly recommended to use `Bot()`.
 
 Import as `zgo.at/isbot`; API docs: https://pkg.go.dev/zgo.at/isbot
