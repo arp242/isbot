@@ -40,6 +40,9 @@ func IsNot(r uint8) bool { return !Is(r) }
 // Bot checks if this HTTP request looks like a bot.
 //
 // It returns one of the constants as the reason we think this is a bot.
+//
+// Note: this assumes that r.RemoteAddr is set to the real IP, and does not
+// check X-Forwarded-For or X-Real-IP.
 func Bot(r *http.Request) uint8 {
 	h := r.Header
 
@@ -50,7 +53,7 @@ func Bot(r *http.Request) uint8 {
 		return BotPrefetch
 	}
 
-	i := IPRange(realIP(r))
+	i := IPRange(r.RemoteAddr)
 	if i > 0 {
 		return i
 	}
@@ -139,6 +142,10 @@ func UserAgent(ua string) uint8 {
 		}
 	}
 
+	// TODO: avoid ToLower() allocation.
+	// BenchmarkBot-2            724268              1574 ns/op               0 B/op          0 allocs/op
+	// BenchmarkBot-2            541042              1996 ns/op              80 B/op          1 allocs/op
+
 	// Boty words.
 	ua = strings.ToLower(ua)
 	if strings.Contains(ua, "bot") ||
@@ -147,22 +154,4 @@ func UserAgent(ua string) uint8 {
 		return BotBoty
 	}
 	return NoBotNoMatch
-}
-
-func realIP(r *http.Request) string {
-	fwd := r.Header.Get("X-Forwarded-For")
-	if fwd != "" {
-		i := strings.Index(fwd, ",")
-		if i == -1 {
-			i = len(fwd)
-		}
-		return strings.TrimSpace(fwd[:i])
-	}
-
-	realip := r.Header.Get("X-Real-IP")
-	if realip != "" {
-		return realip
-	}
-
-	return r.RemoteAddr
 }
