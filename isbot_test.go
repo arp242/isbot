@@ -33,6 +33,8 @@ func TestBotIP(t *testing.T) {
 		in   string
 		want uint8
 	}{
+		{"114.122.138.27", NoBotNoMatch},
+
 		{"35.180.1.1", BotRangeAWS},
 		{"2600:1fff:5000::1", BotRangeAWS},
 
@@ -77,6 +79,8 @@ func TestBotIP(t *testing.T) {
 		{"54.86.34.110", BotRangeAWS},
 		{"54.91.251.150", BotRangeAWS},
 		{"54.92.222.34", BotRangeAWS},
+
+		{"68.183.241.134", BotRangeDigitalOcean},
 	}
 
 	for _, tt := range tests {

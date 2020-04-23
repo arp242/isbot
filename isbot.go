@@ -21,7 +21,8 @@ const (
 	BotBoty                       // User-Agent string looks "boty".
 	BotShort                      // User-Agent is short of strangely formatted.
 
-	BotRangeAWS // AWS cloud
+	BotRangeAWS          // AWS cloud
+	BotRangeDigitalOcean // Digital Ocean
 )
 
 // These are never set by isbot, but can be used to send signals from JS.
@@ -76,6 +77,9 @@ func IPRange(addr string) uint8 {
 		if containsIP(awsEC2Ranges6, ip) {
 			return BotRangeAWS
 		}
+	}
+	if containsIP(digitalOceanRanges, ip) {
+		return BotRangeDigitalOcean
 	}
 
 	return 0
