@@ -27,10 +27,10 @@ const (
 
 // These are never set by isbot, but can be used to send signals from JS.
 const (
-	BotJSWebdriver uint8 = iota + 150
-	BotJSPhantom
+	BotJSPhanton uint8 = iota + 150
 	BotJSNightmare
 	BotJSSelenium
+	BotJSWebDriver
 )
 
 // Is this constant a bot?
