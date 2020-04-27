@@ -12,25 +12,24 @@ import (
 )
 
 const (
-	NoBotKnown       uint8 = iota // Known to not be a bot.
-	NoBotNoMatch                  // None of the rules matches, so probably not a bot.
-	BotPrefetch                   // Prefetch algorithm
-	BotLink                       // User-Agent contained an URL.
-	BotClientLibrary              // Known client library.
-	BotKnownBot                   // Known bot.
-	BotBoty                       // User-Agent string looks "boty".
-	BotShort                      // User-Agent is short of strangely formatted.
-
-	BotRangeAWS          // AWS cloud
-	BotRangeDigitalOcean // Digital Ocean
+	NoBotKnown           = 0 // Known to not be a bot.
+	NoBotNoMatch         = 1 // None of the rules matches, so probably not a bot.
+	BotPrefetch          = 2 // Prefetch algorithm
+	BotLink              = 3 // User-Agent contained an URL.
+	BotClientLibrary     = 4 // Known client library.
+	BotKnownBot          = 5 // Known bot.
+	BotBoty              = 6 // User-Agent string looks "boty".
+	BotShort             = 7 // User-Agent is short of strangely formatted.
+	BotRangeAWS          = 8 // AWS cloud
+	BotRangeDigitalOcean = 9 // Digital Ocean
 )
 
 // These are never set by isbot, but can be used to send signals from JS.
 const (
-	BotJSPhanton uint8 = iota + 150
-	BotJSNightmare
-	BotJSSelenium
-	BotJSWebDriver
+	BotJSPhanton   = 150
+	BotJSNightmare = 151
+	BotJSSelenium  = 152
+	BotJSWebDriver = 153
 )
 
 // Is this constant a bot?
