@@ -1,0 +1,73 @@
+#!/bin/bash
+
+set -eu
+
+exec > ip_ranges.go
+
+cachecurl() {
+	mkdir -p .cache
+	[ -f ".cache/$2" ]  || curl -s "$1" > ".cache/$2"
+	cat ".cache/$2"
+}
+
+write() {
+	sed "s/.*/\tparseNet(\"\\0\", $1),/"
+}
+
+ip_to_bin() {
+	local IFS=.
+	local b=""
+	for n in $1; do
+		b="$b$(printf '%08d\n' $(echo "ibase=10;obase=2;$n" | bc))"
+	done
+	echo $b
+}
+
+range_to_cidr() {
+	while read line; do
+		local ip="${line%-*}"
+		local start="$(ip_to_bin "$ip")"
+		local end="$(ip_to_bin "${line#*-}")"
+
+		for i in $(seq 1 32); do
+			# Bash; but much faster than POSIX:
+			#if [ "$(expr substr $start $i 1)" != "$(expr substr $end $i 1)" ]; then
+			if [ ${start:$i:1} != ${end:$i:1} ]; then
+				break
+			fi
+		done
+		echo "$ip/$(( i ))"
+	done
+}
+
+arin() {
+	cachecurl "https://rdap.arin.net/registry/entity/$1" "arin-$1.json" |
+		jq -c '.networks[].cidr0_cidrs[]' |
+		sed -E 's!^\{"v[46]prefix":"([0-9a-fA-F.:]+?)","length":([0-9]+?)\}!\1/\2!' |
+		write "$2"
+}
+
+ripe() {
+	cachecurl "https://rest.db.ripe.net/search.json?query-string=$1&inverse-attribute=mnt-by&type-filter=inetnum&flags=no-referenced&flags=no-irt&source=RIPE" "ripe-$1.json" |
+		jq  -r '.objects.object[]."primary-key".attribute[0].value' |
+		tr -d ' ' |
+		range_to_cidr |
+		write "$2"
+}
+
+printf 'package isbot\n\nvar ipRanges = []ipRange{\n'
+
+# AWS
+cachecurl 'https://ip-ranges.amazonaws.com/ip-ranges.json' 'aws.json' |
+	jq -r '.prefixes[] | select(.service=="EC2").ip_prefix' |
+	write 'BotRangeAWS'
+cachecurl 'https://ip-ranges.amazonaws.com/ip-ranges.json' 'aws.json' |
+	jq -r '.ipv6_prefixes[] | select(.service=="EC2").ipv6_prefix' |
+	write 'BotRangeAWS'
+
+arin 'DO-13'       'BotRangeDigitalOcean'
+ripe 'SERVERS-MNT' 'BotRangeServersCom'
+arin 'GOOGL-2'     'BotRangeGoogleCloud'
+ripe 'HOS-GUN'     'BotRangeHetzner'
+
+echo '}'

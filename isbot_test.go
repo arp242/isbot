@@ -11,18 +11,8 @@ func BenchmarkBot(b *testing.B) {
 	r := &http.Request{Header: make(http.Header)}
 	r.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0")
 
-	// Comparison of strings.Contains() vs. the regexp mssola/user_agent uses:
-	// var reBot = regexp.MustCompile("(?i)(bot|crawler|sp(i|y)der|search|worm|fetch|nutch)")
-	//
-	// re:          BenchmarkBot-2             55642             20843 ns/op
-	// re no capt:  BenchmarkBot-2             91999             14231 ns/op
-	// contains:    BenchmarkBot-2           1826011               653 ns/op
-	//
-	// Before and after IP checks:
-	//
-	// BenchmarkBot-2            503391              2097 ns/op              80B/op          1 allocs/op
-	// BenchmarkBot-2            454416              2383 ns/op              96 B/op          2 allocs/op
-	//
+	b.ReportAllocs()
+	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
 		Bot(r)
 	}
@@ -81,6 +71,10 @@ func TestBotIP(t *testing.T) {
 		{"54.92.222.34", BotRangeAWS},
 
 		{"68.183.241.134", BotRangeDigitalOcean},
+
+		{"88.212.248.0", BotRangeServersCom},
+		{"88.212.255.255", BotRangeServersCom},
+		{"88.213.0.0", NoBotNoMatch},
 	}
 
 	for _, tt := range tests {
