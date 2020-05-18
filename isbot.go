@@ -53,6 +53,13 @@ func Is(r uint8) bool { return r != NoBotKnown && r != NoBotNoMatch }
 // IsNot is the inverse of Is().
 func IsNot(r uint8) bool { return !Is(r) }
 
+// IsUserAgent reports if this is considered a bot because of the User-Agent
+// header.
+func IsUserAgent(r uint8) bool {
+	return r == BotLink || r == BotClientLibrary || r == BotKnownBot || r ==
+		BotBoty || r == BotShort
+}
+
 // Bot checks if this HTTP request looks like a bot.
 //
 // It returns one of the constants as the reason we think this is a bot.
