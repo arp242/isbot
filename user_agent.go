@@ -76,6 +76,7 @@ var knownBrowsers = []string{
 var knownBots = []string{
 	"ADmantX",
 	"AlexaToolbar/",
+	"Baiduspider",
 	"BingPreview/",
 	"Chrome-Lighthouse",
 	"DumpRenderTree/",
