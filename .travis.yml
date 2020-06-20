@@ -12,4 +12,3 @@ script: |
     -coverprofile=coverage.txt \
     -coverpkg=./... \
     ./...
-  bash <(curl -s https://codecov.io/bash)
