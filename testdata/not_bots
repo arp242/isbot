@@ -1,0 +1,67 @@
+# Popular
+~Z (~A 9; ~M; rv:68.0) ~g68.0 ~f68.0
+~Z (~L; ~A 4.2.1; en-us; Nexus 5 Build/JOP40D) ~a535.19 (KHTML, like Gecko; googleweblight) ~c38.0.1025.166 ~M ~s535.19
+~Z (~L; ~A 6.0.1; SAMSUNG SM-G800H) ~a537.36 ~G SamsungBrowser/11.1 ~c75.0.3770.143 ~M ~s537.36
+~Z (~L; ~A 9; SAMSUNG SM-A730F) ~a537.36 ~G SamsungBrowser/11.1 ~c75.0.3770.143 ~M ~s537.36
+~Z (~I; Intel Mac OS X 10_14_6) ~a537.36 ~G ~c79.0.3945.130 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c79.0.3945.117 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c79.0.3945.130 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c79.0.3945.88 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c80.0.3987.122 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c80.0.3987.132 ~s537.36
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c80.0.3987.149 ~s537.36
+~Z (~W NT 10.0; Win64; x64; rv:67.0) ~g20100101 ~f67.0
+~Z (~W NT 10.0; Win64; x64; rv:72.0) ~g20100101 ~f72.0
+~Z (~W NT 10.0; Win64; x64; rv:73.0) ~g20100101 ~f73.0
+~Z (X11; ~L x86_64) ~a537.36 ~G ~c79.0.3945.130 ~s537.36
+~Z (X11; ~L x86_64; rv:71.0) ~g20100101 ~f71.0
+~Z (~i; CPU ~i OS 12_4_5 like Mac OS X) ~a605.1.15 ~G ~v12.1.2 ~m15E148 ~s604.1
+~Z (~i; CPU ~i OS 13_3 like Mac OS X) ~a605.1.15 ~G ~v13.0.4 ~m15E148 ~s604.1
+~Z (~i; CPU ~i OS 13_3_1 like Mac OS X) ~a605.1.15 ~G ~v13.0.5 ~m15E148 ~s604.1
+
+# User-Agents with a + in them
+MT6735_TD/V1 ~L/3.18.19+ ~A/6.0 Release/03.03.2015 Browser/AppleWebKit537.36 ~c39.0.0.0 ~M ~s537.36 System/~A 6.0;
+~Z (BB10; Kbd) ~a537.35+ ~G ~v10.3.3.3216 ~M ~s537.35+
+~Z (~L; ~A 4.4.2; V3+ Build/KOT49H) ~a537.36 ~G ~v4.0 ~c30.0.0.0 ~M ~s537.36
+~Z (~L; ~A 7.0; Micromax Q402+ Build/NRD90M; wv) ~a537.36 ~G ~v4.0 ~c64.0.3282.137 ~M ~s537.36
+~Z (X11; ~L i686 on x86_64; rv:45.0) ~g20100101 ~f45.0 Ordissimo/3.8.6.6+svn37147
+~Z (X11; ~L i686 on x86_64; rv:52.0) ~g20100101 ~f52.0 webissimo3/3.8.12+svn35125
+~Z (X11; U; ~L armv7l like ~A; en-us) ~a531.2+ ~G ~v5.0 ~s533.2+ Kindle/3.0+
+Mozilla/5.066704189 ~Z (~W NT 6.1; Win64; x64) ~a537.36 ~G ~c69.0.3497.81 ~s537.36
+
+# User-Agents with "search" in them but are NOT search crawlers.
+~Z (~L; ~A 10; VOG-AL10 Build/HUAWEIVOG-AL10; wv) ~a537.36 ~G ~v4.0 ~c74.0.3729.186 ~M ~s537.36 SearchCraft/3.6.4 (Baidu; P1 10)
+~Z (~L; ~A 5.1.1; SM-J320F Build/LMY47V; wv) ~a537.36 ~G ~v4.0 ~c55.0.2883.91 ~M ~s537.36 YandexSearch/8.05 YandexSearchBrowser/8.05
+~Z (~L; ~A 5.1.1; SM-J320F Build/LMY47V; wv) ~a537.36 ~G ~v4.0 ~c67.0.3396.87 ~M ~s537.36 YandexSearch/7.15
+~Z (~L; arm; ~A 9; SM-A105F) ~a537.36 ~G ~c79.0.3945.117 YaApp_~A/10.45 YaSearchBrowser/10.45 BroPP/1.0 ~M ~s537.36
+~Z (~i; CPU ~i OS 13_3_1 like Mac OS X) ~a605.1.15 ~G ~v13.0 ~m15E148 ~s605.1 NAVER(inapp; search; 690; 10.16.4; 8)
+
+# Contains a link, but is not a bot.
+~Z (~L; ~A 10; ~A SDK built for x86 Build/QSR1.190920.001; wv) ~a537.36 ~G ~v4.0 ~c74.0.3729.185 ~M ~s537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)
+~Z (~L; ~A 10; ONEPLUS A6003 Build/QKQ1.190716.003; wv) ~a537.36 ~G ~v4.0 ~c80.0.3987.99 ~M ~s537.36 StudoBrowser/3.17.6-android-studo.staging (https://studo.co/studo-browser-information-and-contact)
+~Z (~L; ~A 7.0; HUAWEI VNS-L31 Build/HUAWEIVNS-L31; wv) ~a537.36 ~G ~v4.0 ~c79.0.3945.93 ~M ~s537.36 StudoBrowser/3.16.0-android-studo (https://studo.co/studo-browser-information-and-contact)
+~Z (iPad; CPU OS 12_4_1 like Mac OS X) ~a605.1.15 ~G ~m15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)
+~Z (~i; CPU ~i OS 13_2_2 like Mac OS X) ~a605.1.15 ~G ~m15E148 StudoBrowser/3.16.0-ios-studo.staging (https://studo.co/studo-browser-information-and-contact)
+~Z (~i; CPU ~i OS 13_3 like Mac OS X) ~a605.1.15 ~G ~m15E148 StudoBrowser/3.16.0-ios-studo (https://studo.co/studo-browser-information-and-contact)
+
+# Contains "BOT" but not a bot.
+~Z (~L; ~A 6.0; CUBOT MAX) ~a537.36 ~G ~c77.0.3865.92 ~M ~s537.36
+~Z (~L; ~A 8.0.0; CUBOT_X18_Plus Build/O00623; wv) ~a537.36 ~G ~v4.0 ~c80.0.3987.132 ~M ~s537.36 Instagram 132.0.0.26.134 ~A (26/8.0.0; 480dpi; 1080x2016; CUBOT; CUBOT_X18_Plus; CUBOT_X18_Plus; mt6755; en_GB; 202766609)
+
+# TODO: fails, and they're detected as a bot; they're quite rare (about 100 hits out of 6.5 million) so not a disaster.
+# ~Z (~L; ~A 6.0; B BOT 550) ~a537.36 ~G ~c79.0.3945.93 ~M ~s537.36
+# ~Z (~L; ~A 6.0; VR BOT 552) ~a537.36 ~G ~c78.0.3904.108 ~M ~s537.36
+# ~Z (~L; ~A 7.0; M bot 60) ~a537.36 ~G ~c74.0.3729.157 ~M ~s537.36
+# ~Z (~L; ~A 7.1.2; M_bot_tab_71 Build/NHG47K) ~a537.36 ~G ~c58.0.3029.83 ~s537.36
+# ~Z (~L; ~A 8.1.0; XBot Junior Build/O11019; wv) ~a537.36 ~G ~v4.0 ~c65.0.3325.109 ~M ~s537.36
+
+# Embeded browsers for various services that also commonly run bots.
+Instagram 128.0.0.19.119 (~i12,3; iOS 13_3_1; en_US; en-US; scale=3.00; 1125x2436; 197357527) ~a420+
+~Z (~L; ~A 9; LG-H870 Build/PKQ1.190522.001; wv) ~a537.36 ~G ~v4.0 ~c80.0.3987.119 ~M ~s537.36 [Pinterest/~A]
+~Z (~i; CPU ~i OS 13_3_1 like Mac OS X) ~a605.1.15 ~G ~m15E148 Instagram 131.0.0.21.117 (~i11,8; iOS 13_3_1; en_US; en-US; scale=2.00; 828x1792; 201058581)
+~Z (~i; CPU ~i OS 13_3_1 like Mac OS X) ~a605.1.15 ~G ~m15E148 Instagram 131.0.0.21.117 (~i12,1; iOS 13_3_1; en_US; en-US; scale=2.00; 828x1792; 201058581)
+~Z (~i; CPU ~i OS 13_3_1 like Mac OS X) ~a605.1.15 ~G ~m15E148 LightSpeed [FBAN/MessengerLiteForiOS;FBAV/256.0.1.26.113;FBBV/203261359;FBDV/~i8,4;FBMD/~i;FBSN/iOS;FBSV/13.3.1;FBSS/2;FBCR/;FBID/phone;FBLC/en_GE;FBOP/0]
+
+# Outlook
+Outlook-iOS/719.3711406.prod.iphone (4.22.0)
+Outlook-iOS/719.3750190.prod.iphone (4.23.0)
