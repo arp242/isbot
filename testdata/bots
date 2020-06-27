@@ -161,6 +161,10 @@ Netcraft SSL Server Survey - contact info@netcraft.com
 ~Z (~L; ~A 6.0; Nexus 5 Build/MRA58N) AppleKit/537.36 ~G ~c48.0.2564.23 ~M ~s537.36 RuxitSynthetic/1.0 v303343969 t25549
 ~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c78.0.1.5135 ~s537.36 RuxitRecorder/1.0
 
+# Not entirely sure what this is, but sure seems like a bot.
+~Z (~C; TrendsmapResolver/0.1)
+~Z (~C; um-LN/1.0; mailto: techinfo@ubermetrics-technologies.com; ~W NT 6.1; WOW64; rv:40.0) ~g20100101 ~f40.1
+
 # Uncategorized
 ADmantX Platform Semantic Analyzer - ADmantX Inc. - www.admantx.com - support@admantx.com
 CATExplorador/1.0beta (sistemes at domini dot cat; http://domini.cat/catexplorador.html)

@@ -105,6 +105,8 @@ var knownBots = []string{
 	"panscient.com",
 	"tracemyfile/",
 	"wsr-agent/",
-	"RuxitRecorder/",  // Dynatrace performance monitor.
-	"RuxitSynthetic/", // Dynatrace performance monitor.
+	"RuxitRecorder/",     // Dynatrace performance monitor.
+	"RuxitSynthetic/",    // Dynatrace performance monitor.
+	"TrendsmapResolver/", // ?
+	"ubermetrics-technologies.com",
 }
