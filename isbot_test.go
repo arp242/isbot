@@ -130,6 +130,10 @@ func TestBotIP(t *testing.T) {
 
 		{"88.212.248.0", BotRangeServersCom},
 		{"88.212.255.255", BotRangeServersCom},
+
+		{"2a01:4f8:162:5447::2", BotRangeHetzner},
+		{"2a01:4f8:140:21ee::2", BotRangeHetzner},
+
 		{"88.213.0.0", NoBotNoMatch},
 	}
 

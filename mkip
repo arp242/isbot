@@ -6,7 +6,7 @@ exec > ip_ranges.go
 
 cachecurl() {
 	mkdir -p .cache
-	[ -f ".cache/$2" ]  || curl -s "$1" > ".cache/$2"
+	[ -f ".cache/$2" ] || curl "$1" > ".cache/$2"
 	cat ".cache/$2"
 }
 
@@ -48,11 +48,14 @@ arin() {
 }
 
 ripe() {
-	cachecurl "https://rest.db.ripe.net/search.json?query-string=$1&inverse-attribute=mnt-by&type-filter=inetnum&flags=no-referenced&flags=no-irt&source=RIPE" "ripe-$1.json" |
+	# TODO: doesn't deal well with IPv6 networks. I should rewrite this shell cruft.
+	# cachecurl "https://rest.db.ripe.net/search.json?query-string=$1&inverse-attribute=$2&type-filter=inetnum&type-filter=inet6num&flags=no-referenced&flags=no-irt&source=RIPE" "ripe-$1.json" |
+
+	cachecurl "https://rest.db.ripe.net/search.json?query-string=$1&inverse-attribute=$2&type-filter=inetnum&flags=no-referenced&flags=no-irt&source=RIPE" "ripe-$1.json" |
 		jq  -r '.objects.object[]."primary-key".attribute[0].value' |
 		tr -d ' ' |
 		range_to_cidr |
-		write "$2"
+		write "$3"
 }
 
 printf 'package isbot\n\nvar ipRanges = []ipRange{\n'
@@ -66,8 +69,9 @@ cachecurl 'https://ip-ranges.amazonaws.com/ip-ranges.json' 'aws.json' |
 	write 'BotRangeAWS'
 
 arin 'DO-13'       'BotRangeDigitalOcean'
-ripe 'SERVERS-MNT' 'BotRangeServersCom'
 arin 'GOOGL-2'     'BotRangeGoogleCloud'
-ripe 'HOS-GUN'     'BotRangeHetzner'
+
+ripe 'SERVERS-MNT'   'mnt-by' 'BotRangeServersCom'
+ripe 'ORG-HOA1-RIPE' 'org'    'BotRangeHetzner'
 
 echo '}'
