@@ -100,9 +100,11 @@ var knownBots = []string{
 	"WhatWeb/",
 	"WinInet",
 	"WordPress.com",
-	"burpcollaborator.net/",
+	"burpcollaborator.net/", // Burp security analyzer
 	"okhttp/",
 	"panscient.com",
 	"tracemyfile/",
 	"wsr-agent/",
+	"RuxitRecorder/",  // Dynatrace performance monitor.
+	"RuxitSynthetic/", // Dynatrace performance monitor.
 }

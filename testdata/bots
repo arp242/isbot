@@ -1,4 +1,4 @@
-# Baidu
+### Baidu
 Baiduspider+(+http://www.baidu.com/search/spider.htm)
 Baiduspider+(+http://www.baidu.com/search/spider.htm???);googlebot|baiduspider|baidu|spider|sogou|bingbot|bot|yahoo|soso|sosospider|360spider|youdaobot
 Baiduspider-image+(+http://www.baidu.com/search/spider.htm)
@@ -14,13 +14,13 @@ Baiduspider-image+(+http://www.baidu.com/search/spider.htm)
 ~Z (~i; CPU ~i OS 9_1 like Mac OS X) ~a601.1.46 ~G ~v9.0 ~m13B143 ~s601.1 (~C; Baiduspider-render/2.0; +http://www.baidu.com/search/spider.html)
 Mozilla/5.0+(~C;+Baiduspider/2.0;++http://www.baidu.com/search/spider.html)
 
-# Bing
+### Bing
 ~Z (~W NT 6.1; WOW64) ~a534+ ~G BingPreview/1.0b
 ~Z (~C; bingbot/2.0; +http://www.bing.com/bingbot.htm)
 ~Z (~i; CPU ~i OS 7_0 like Mac OS X) ~a537.51.1 ~G ~v7.0 ~m11A465 ~s9537.53 (~C; bingbot/2.0; +http://www.bing.com/bingbot.htm)
 ~Z ~a537.36 (KHTML, like Gecko; ~C; bingbot/2.0; +http://www.bing.com/bingbot.htm) ~s537.36
 
-# All the various Google stuff.
+### All the various Google stuff.
 APIs-Google (+https://developers.google.com/webmasters/APIs-Google.html)
 AdsBot-Google (+http://www.google.com/adsbot.html)
 AdsBot-Google-~M (+http://www.google.com/mobile/adsbot.html) Mozilla (~i; U; CPU ~i OS 3 0 like Mac OS X) AppleWebKit ~G ~M Safari
@@ -156,6 +156,10 @@ Netcraft SSL Server Survey - contact info@netcraft.com
 ~Z (~C; woorankreview/2.0; +https://www.woorank.com/)
 ~Z (iPad; CPU OS 11_0 like Mac OS X) ~a604.1.34 ~G ~v11.0 ~m15A5341f ~s604.1 (~C; woorankreview/2.0; +https://www.woorank.com/)
 ~Z (~i; CPU ~i OS 11_0 like Mac OS X) ~a604.1.38 ~G ~v11.0 ~m15A372 ~s604.1 (~C; woorankreview/2.0; +https://www.woorank.com/)
+
+# Dynatrace bot
+~Z (~L; ~A 6.0; Nexus 5 Build/MRA58N) AppleKit/537.36 ~G ~c48.0.2564.23 ~M ~s537.36 RuxitSynthetic/1.0 v303343969 t25549
+~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c78.0.1.5135 ~s537.36 RuxitRecorder/1.0
 
 # Uncategorized
 ADmantX Platform Semantic Analyzer - ADmantX Inc. - www.admantx.com - support@admantx.com
