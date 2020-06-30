@@ -51,8 +51,8 @@ func UserAgent(ua string) uint8 {
 }
 
 var clientLibraries = []string{
-	"Apache-HttpClient/",
 	"Go-http-client/",
+	"HttpClient/",
 	"HTTPClient/",
 	"Java/",
 	"PycURL/",

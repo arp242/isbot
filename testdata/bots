@@ -114,6 +114,9 @@ Wget/1.13.4 (linux-gnu)
 curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.15.3 zlib/1.2.3 libidn/1.18 libssh2/1.4.2
 curl/7.35.0
 python-requests/2.2.1 CPython/2.7.6 ~L/3.13.0-24-generic
+LinkedInBot/1.0 (~C; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)
+LinkedInBot/1.0 (~C; Mozilla/5.0; Apache-HttpClient +http://www.linkedin.com)
+Jakarta Commons-HttpClient/3.1
 
 # Headless Chrome
 ~Z (X11; ~L x86_64) ~a537.36 ~G Headless~c60.0.3095.0 ~s537.36 SeoSiteCheckup (https://seositecheckup.com)
@@ -178,7 +181,6 @@ Faraday v0.8.9
 GigablastOpenSource/1.0
 GumGum-Bot/1.0 (http://gumgum.com; support@gumgum.com)
 Http://ar5ecpsuzokh4t5pff0zjpvp7gd91zpsrgm3cr1.burpcollaborator.net/5.0 (~L; ~A 7.0; PLUS Build/NRD90M) ~a537.36 ~G ~c61.0.3163.98 ~M ~s537.36
-LinkedInBot/1.0 (~C; Mozilla/5.0; Apache-HttpClient +http://www.linkedin.com)
 MAZBot/1.0 (http://mazdigital.com)
 MJ12bot/v1.0.8 (http://majestic12.co.uk/bot.php?+)
 # Mozilla/2.0 (compatible; crw)
@@ -376,7 +378,6 @@ mozilla/5.0 (~C; heritrix/1.3.0 http://archive.crawler.org)
 #IP-Guide.com Crawler/1.0 (https://ip-guide.com)
 #Kaspersky Lab CFR link resolver cfradmins@kaspersky.com
 #LCC (+http://corpora.informatik.uni-leipzig.de/crawler_faq.html)
-#LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)
 #MagpieRSS/0.72 (+http://magpierss.sf.net)
 #MetaFeedly/1.0 (http://www.feedly.com)
 #MetaInspector/5.4.0 (+https://github.com/jaimeiniesta/metainspector)
