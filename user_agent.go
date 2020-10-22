@@ -47,6 +47,7 @@ func UserAgent(ua string) uint8 {
 		strings.Contains(ua, "spider") {
 		return BotBoty
 	}
+
 	return NoBotNoMatch
 }
 
@@ -109,4 +110,6 @@ var knownBots = []string{
 	"RuxitSynthetic/",    // Dynatrace performance monitor.
 	"TrendsmapResolver/", // ?
 	"ubermetrics-technologies.com",
+	"zgrab/",                     //  https://github.com/zmap/zgrab2/search?q=user-agent
+	"nbertaupete95(at)gmail.com", // Not sure what this belongs to
 }

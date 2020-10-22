@@ -264,6 +264,8 @@ screeenly-bot 2.0
 spotinfluence/Nutch-1.4 (Spot Influence crawler; http://spotinfluence.com; hello at spotinfluence dot com)
 visaduhoc.info Crawler
 wsr-agent/1.0
+~Z zgrab/0.x
+Mozilla/5.0/Firefox/42.0 - nbertaupete95(at)gmail.com
 
 # Facebook
 facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
