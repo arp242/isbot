@@ -10,14 +10,17 @@ import (
 )
 
 const (
-	NoBotKnown           = 0  // Known to not be a bot.
-	NoBotNoMatch         = 1  // None of the rules matches, so probably not a bot.
-	BotPrefetch          = 2  // Prefetch algorithm
-	BotLink              = 3  // User-Agent contained an URL.
-	BotClientLibrary     = 4  // Known client library.
-	BotKnownBot          = 5  // Known bot.
-	BotBoty              = 6  // User-Agent string looks "boty".
-	BotShort             = 7  // User-Agent is short of strangely formatted.
+	NoBotKnown       = 0 // Known to not be a bot.
+	NoBotNoMatch     = 1 // None of the rules matches, so probably not a bot.
+	BotPrefetch      = 2 // Prefetch algorithm
+	BotLink          = 3 // User-Agent contained an URL.
+	BotClientLibrary = 4 // Known client library.
+	BotKnownBot      = 5 // Known bot.
+	BotBoty          = 6 // User-Agent string looks "boty".
+	BotShort         = 7 // User-Agent is short of strangely formatted.
+)
+
+const (
 	BotRangeAWS          = 8  // AWS cloud
 	BotRangeDigitalOcean = 9  // Digital Ocean
 	BotRangeServersCom   = 10 // servers.com
@@ -56,8 +59,7 @@ func IsNot(r uint8) bool { return !Is(r) }
 // IsUserAgent reports if this is considered a bot because of the User-Agent
 // header.
 func IsUserAgent(r uint8) bool {
-	return r == BotLink || r == BotClientLibrary || r == BotKnownBot || r ==
-		BotBoty || r == BotShort
+	return r == BotLink || r == BotClientLibrary || r == BotKnownBot || r == BotBoty || r == BotShort
 }
 
 // Bot checks if this HTTP request looks like a bot.

@@ -168,7 +168,19 @@ Netcraft SSL Server Survey - contact info@netcraft.com
 ~Z (~C; TrendsmapResolver/0.1)
 ~Z (~C; um-LN/1.0; mailto: techinfo@ubermetrics-technologies.com; ~W NT 6.1; WOW64; rv:40.0) ~g20100101 ~f40.1
 
+# wkhtmltopdf
+~Z (Unknown; ~L i686) ~a602.1 ~G wkhtmltopdf ~v9.0 ~s602.1
+~Z (Unknown; ~L x86_64) ~a602.1 ~G wkhtmltoimage ~v10.0 ~s602.1
+~Z (~W NT 6.2; Win64; x64) ~a534.34 ~G wkhtmltoimage ~s534.34
+~Z (~W NT 6.2; Win64; x64) ~a534.34 ~G wkhtmltopdf ~s534.34
+~Z (X11; BSD Four) ~a534.34 ~G wkhtmltopdf ~s534.34
+
+# SlimerJS
+Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 SlimerJS/1.0.0
+Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 SlimerJS/0.10.3
+
 # Uncategorized
+~Z (~C; Dataprovider.com)
 ADmantX Platform Semantic Analyzer - ADmantX Inc. - www.admantx.com - support@admantx.com
 CATExplorador/1.0beta (sistemes at domini dot cat; http://domini.cat/catexplorador.html)
 COMODOSpider/Nutch-1.2

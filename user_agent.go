@@ -16,6 +16,11 @@ func UserAgent(ua string) uint8 {
 		return BotShort
 	}
 
+	// Nothing after first closing )
+	// if strings.IndexByte(ua, ')') == len(ua)-1 {
+	// 	return BotBoty
+	// }
+
 	for i := range knownBrowsers {
 		if strings.Contains(ua, knownBrowsers[i]) {
 			return NoBotKnown
@@ -112,4 +117,7 @@ var knownBots = []string{
 	"ubermetrics-technologies.com",
 	"zgrab/",                     //  https://github.com/zmap/zgrab2/search?q=user-agent
 	"nbertaupete95(at)gmail.com", // Not sure what this belongs to
+	"Dataprovider.com",
+	"wkhtmltoimage", "wkhtmltopdf",
+	"SlimerJS",
 }
