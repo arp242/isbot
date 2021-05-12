@@ -7,11 +7,41 @@ package isbot
 
 import (
 	"net/http"
+	"strconv"
 )
 
+type Result uint8
+
+func (r Result) String() string {
+	return strconv.Itoa(int(r)) + ": " + map[Result]string{
+		0:   "NoBotKnown",
+		1:   "NoBotNoMatch",
+		2:   "BotPrefetch",
+		3:   "BotLink",
+		4:   "BotClientLibrary",
+		5:   "BotKnownBot",
+		6:   "BotBoty",
+		7:   "BotShort",
+		8:   "BotRangeAWS",
+		9:   "BotRangeDigitalOcean",
+		10:  "BotRangeServersCom",
+		11:  "BotRangeGoogleCloud",
+		12:  "BotRangeHetzner",
+		150: "BotJSPhanton",
+		151: "BotJSNightmare",
+		152: "BotJSSelenium",
+		153: "BotJSWebDriver",
+	}[r]
+}
+
+// Not bots.
 const (
-	NoBotKnown       = 0 // Known to not be a bot.
-	NoBotNoMatch     = 1 // None of the rules matches, so probably not a bot.
+	NoBotKnown   = 0 // Known to not be a bot.
+	NoBotNoMatch = 1 // None of the rules matches, so probably not a bot.
+)
+
+// Bots identified by User-Agent.
+const (
 	BotPrefetch      = 2 // Prefetch algorithm
 	BotLink          = 3 // User-Agent contained an URL.
 	BotClientLibrary = 4 // Known client library.
@@ -20,6 +50,7 @@ const (
 	BotShort         = 7 // User-Agent is short of strangely formatted.
 )
 
+// Bots identified by IP.
 const (
 	BotRangeAWS          = 8  // AWS cloud
 	BotRangeDigitalOcean = 9  // Digital Ocean
@@ -51,14 +82,14 @@ const (
 )
 
 // Is this constant a bot?
-func Is(r uint8) bool { return r != NoBotKnown && r != NoBotNoMatch }
+func Is(r Result) bool { return r != NoBotKnown && r != NoBotNoMatch }
 
 // IsNot is the inverse of Is().
-func IsNot(r uint8) bool { return !Is(r) }
+func IsNot(r Result) bool { return !Is(r) }
 
 // IsUserAgent reports if this is considered a bot because of the User-Agent
 // header.
-func IsUserAgent(r uint8) bool {
+func IsUserAgent(r Result) bool {
 	return r == BotLink || r == BotClientLibrary || r == BotKnownBot || r == BotBoty || r == BotShort
 }
 
@@ -66,9 +97,12 @@ func IsUserAgent(r uint8) bool {
 //
 // It returns one of the constants as the reason we think this is a bot.
 //
-// Note: this assumes that r.RemoteAddr is set to the real IP, and does not
-// check X-Forwarded-For or X-Real-IP.
-func Bot(r *http.Request) uint8 {
+// This assumes that r.RemoteAddr is set to the real IP and does not check
+// X-Forwarded-For or X-Real-IP.
+//
+// Note that both 0 and 1 may indicate that it's *not* a bot; use Is() and
+// IsNot() to check.
+func Bot(r *http.Request) Result {
 	if Prefetch(r.Header) {
 		return BotPrefetch
 	}

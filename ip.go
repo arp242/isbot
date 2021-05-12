@@ -5,11 +5,11 @@ package isbot
 import "net"
 
 type ipRange struct {
-	bot uint8
+	bot Result
 	net *net.IPNet
 }
 
-func parseNet(ip string, b uint8) ipRange {
+func parseNet(ip string, b Result) ipRange {
 	_, n, err := net.ParseCIDR(ip)
 	if err != nil {
 		panic(err)
@@ -19,7 +19,7 @@ func parseNet(ip string, b uint8) ipRange {
 
 // IPRange checks if this IP address is from a range that should normally never
 // send browser requests, such as AWS and other cloud providers.
-func IPRange(addr string) uint8 {
+func IPRange(addr string) Result {
 	if addr == "" {
 		return 0
 	}

@@ -77,7 +77,7 @@ func BenchmarkBot(b *testing.B) {
 func TestBotIP(t *testing.T) {
 	tests := []struct {
 		in   string
-		want uint8
+		want Result
 	}{
 		{"114.122.138.27", NoBotNoMatch},
 

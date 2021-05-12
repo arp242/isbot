@@ -5,7 +5,7 @@ import "strings"
 // UserAgent checks if this User-Agent header looks like a bot.
 //
 // It returns one of the constants as the reason we think this is a bot.
-func UserAgent(ua string) uint8 {
+func UserAgent(ua string) Result {
 	// TODO: it's not uncommon to not have a User-Agent at all ... not sure what
 	// we want to do with that; a quick looks reveals they *may* be regular
 	// users who cleared it? Not sure...
