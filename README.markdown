@@ -7,7 +7,7 @@ the like.
 the `User-Agent`. You can use `UserAgent()` if you just have a `User-Agent`, but
 it's highly recommended to use `Bot()`.
 
-Import as `zgo.at/isbot`; API docs: https://pkg.go.dev/zgo.at/isbot
+Import as `zgo.at/isbot`; API docs: https://godocs.io/zgo.at/isbot
 
 There is a command-line tool in `cmd/isbot` to check if User-Agents are bots:
 
