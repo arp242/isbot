@@ -107,12 +107,12 @@ func Bot(r *http.Request) Result {
 		return BotPrefetch
 	}
 
-	i := IPRange(r.RemoteAddr)
+	i := UserAgent(r.UserAgent())
 	if i > 0 {
 		return i
 	}
 
-	return UserAgent(r.UserAgent())
+	return IPRange(r.RemoteAddr)
 }
 
 // Prefetch checks if this request is a browser "pre-fetch" request.
