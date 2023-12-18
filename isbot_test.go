@@ -143,7 +143,7 @@ func TestBotIP(t *testing.T) {
 			r.Header.Add("User-Agent", "Your user agent: Mozilla/5.0 (X11; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0")
 			got := Bot(r)
 			if got != tt.want {
-				t.Errorf("got %d; want %d", got, tt.want)
+				t.Errorf("got %s; want %s", got, tt.want)
 			}
 		})
 	}

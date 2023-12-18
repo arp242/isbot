@@ -21,11 +21,11 @@ func parseNet(ip string, b Result) ipRange {
 // send browser requests, such as AWS and other cloud providers.
 func IPRange(addr string) Result {
 	if addr == "" {
-		return 0
+		return NoBotKnown
 	}
 	ip := net.ParseIP(addr)
 	if ip == nil {
-		return 0
+		return NoBotKnown
 	}
 
 	for _, r := range ipRanges {
@@ -33,5 +33,5 @@ func IPRange(addr string) Result {
 			return r.bot
 		}
 	}
-	return 0
+	return NoBotNoMatch
 }

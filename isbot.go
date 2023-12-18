@@ -27,6 +27,9 @@ func (r Result) String() string {
 		10:  "BotRangeServersCom",
 		11:  "BotRangeGoogleCloud",
 		12:  "BotRangeHetzner",
+		13:  "BotRangeAzure",
+		14:  "BotRangeAlibaba",
+		15:  "BotRangeLinode",
 		150: "BotJSPhanton",
 		151: "BotJSNightmare",
 		152: "BotJSSelenium",
@@ -57,23 +60,26 @@ const (
 	BotRangeServersCom   = 10 // servers.com
 	BotRangeGoogleCloud  = 11 // Google Cloud
 	BotRangeHetzner      = 12 // hetzner.de
+	BotRangeAzure        = 13 // Azure Cloud
+	BotRangeAlibaba      = 14 // Alibaba cloud
+	BotRangeLinode       = 15 // Linode
 )
 
 // These are never set by isbot, but can be used to send signals from JS; for
 // example:
 //
-//    var is_bot = function() {
-//        var w = window, d = document
-//        if (w.callPhantom || w._phantom || w.phantom)
-//            return 150
-//        if (w.__nightmare)
-//            return 151
-//        if (d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate)
-//            return 152
-//        if (navigator.webdriver)
-//            return 153
-//        return 0
-//    }
+//	var is_bot = function() {
+//	    var w = window, d = document
+//	    if (w.callPhantom || w._phantom || w.phantom)
+//	        return 150
+//	    if (w.__nightmare)
+//	        return 151
+//	    if (d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate)
+//	        return 152
+//	    if (navigator.webdriver)
+//	        return 153
+//	    return 0
+//	}
 const (
 	BotJSPhanton   = 150 // Phantom headless browser.
 	BotJSNightmare = 151 // Nightmare headless browser.
@@ -108,7 +114,7 @@ func Bot(r *http.Request) Result {
 	}
 
 	i := UserAgent(r.UserAgent())
-	if i > 0 {
+	if i > 1 {
 		return i
 	}
 
