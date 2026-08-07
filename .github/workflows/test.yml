@@ -1,20 +1,33 @@
-name: 'test backend'
-on:   ['push', 'pull_request']
+name: 'test'
+on:
+  pull_request:
+    paths: ['**.go', 'go.mod', '.github/workflows/*']
+  push:
+    branches: ['main']
 
 jobs:
-  test:
-    name:    'test (linux)'
-    runs-on: 'ubuntu-latest'
-    steps:
-      - uses: 'actions/checkout@v4'
-      - name: 'test (linux)'
-        run: |
-          go test -race ./...
-
   staticcheck:
     name:    'staticcheck'
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: 'actions/checkout@v4'
-      - uses: 'dominikh/staticcheck-action@v1.3.1'
-        with: {version: '2025.1.1'}
+      - uses: 'actions/checkout@v6'
+      - uses: 'dominikh/staticcheck-action@v1'
+
+  test:
+    strategy:
+      matrix:
+        go: ['1.23.x', '1.26.x']
+        os: ['ubuntu-latest', 'ubuntu-24.04-arm', 'macos-latest', 'windows-latest', 'windows-11-arm']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: 'actions/checkout@v6'
+      - uses: 'actions/setup-go@v6'
+        with:
+          go-version: ${{ matrix.go }}
+      - shell: 'bash'
+        run: |
+          # "-race is not supported on windows/arm64"
+          race='-race'
+          [ $RUNNER_OS = 'Windows' ] && [ $RUNNER_ARCH = 'ARM64' ] && race=''
+
+          go test $race ./...
