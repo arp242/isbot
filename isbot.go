@@ -30,6 +30,8 @@ func (r Result) String() string {
 		13:  "BotRangeAzure",
 		14:  "BotRangeAlibaba",
 		15:  "BotRangeLinode",
+		16:  "BotRangeOracle",
+		17:  "BotRangeOVH",
 		150: "BotJSPhanton",
 		151: "BotJSNightmare",
 		152: "BotJSSelenium",
@@ -63,6 +65,8 @@ const (
 	BotRangeAzure        = 13 // Azure Cloud
 	BotRangeAlibaba      = 14 // Alibaba cloud
 	BotRangeLinode       = 15 // Linode
+	BotRangeOracle       = 16 // Oracle cloud
+	BotRangeOVH          = 17 // OVH Cloud
 )
 
 // These are never set by isbot, but can be used to send signals from JS; for

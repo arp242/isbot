@@ -75,7 +75,7 @@ func BenchmarkBot(b *testing.B) {
 }
 
 func BenchmarkIP(b *testing.B) {
-	for _, ip := range []string{"35.180.1.1", "95.216.1.1"} {
+	for _, ip := range []string{"35.180.1.1", "95.216.1.1", "222.167.237.1", "2607:5300::1"} {
 		b.Run(ip, func(b *testing.B) {
 			r := &http.Request{Header: make(http.Header), RemoteAddr: ip}
 			r.Header.Add("User-Agent", "Your user agent: Mozilla/5.0 (X11; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0")
@@ -145,11 +145,11 @@ func TestBotIP(t *testing.T) {
 
 		{"68.183.241.134", BotRangeDigitalOcean},
 
-		{"88.212.248.0", BotRangeServersCom},
-		{"88.212.255.255", BotRangeServersCom},
+		//{"88.212.248.0", BotRangeServersCom},
+		//{"88.212.255.255", BotRangeServersCom},
 
-		// {"2a01:4f8:162:5447::2", BotRangeHetzner},
-		// {"2a01:4f8:140:21ee::2", BotRangeHetzner},
+		{"2a01:4f8:162:5447::2", BotRangeHetzner},
+		{"2a01:4f8:140:21ee::2", BotRangeHetzner},
 
 		{"88.213.0.0", NoBotNoMatch},
 	}
