@@ -2,19 +2,21 @@
 
 package isbot
 
-import "net"
+import (
+	"net/netip"
+)
 
 type ipRange struct {
-	bot Result
-	net *net.IPNet
+	bot    Result
+	prefix netip.Prefix
 }
 
 func parseNet(ip string, b Result) ipRange {
-	_, n, err := net.ParseCIDR(ip)
+	prefix, err := netip.ParsePrefix(ip)
 	if err != nil {
 		panic(err)
 	}
-	return ipRange{bot: b, net: n}
+	return ipRange{bot: b, prefix: prefix}
 }
 
 // IPRange checks if this IP address is from a range that should normally never
@@ -23,13 +25,13 @@ func IPRange(addr string) Result {
 	if addr == "" {
 		return NoBotKnown
 	}
-	ip := net.ParseIP(addr)
-	if ip == nil {
+	ip, err := netip.ParseAddr(addr)
+	if err != nil {
 		return NoBotKnown
 	}
 
 	for _, r := range ipRanges {
-		if r.net.Contains(ip) {
+		if r.prefix.Contains(ip) {
 			return r.bot
 		}
 	}
