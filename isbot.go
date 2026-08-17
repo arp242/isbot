@@ -117,11 +117,10 @@ func Bot(r *http.Request) Result {
 		return BotPrefetch
 	}
 
-	i := UserAgent(r.UserAgent())
-	if i > 1 {
-		return i
+	bot := UserAgent(r.UserAgent())
+	if Is(bot) {
+		return bot
 	}
-
 	return IPRange(r.RemoteAddr)
 }
 
